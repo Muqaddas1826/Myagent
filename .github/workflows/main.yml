@@ -1,0 +1,25 @@
+name: CI for My Project
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: self-hosted  # Use the self-hosted runner you configured
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the code from your repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2  # Set up Node.js environment
+        with:
+          node-version: '14'  # Use Node.js version 14
+
+      - name: Install dependencies
+        run: npm install  # Install your dependencies
+
+      - name: Run tests
+        run: npm test  # Run your tests
